@@ -10,7 +10,9 @@ public class JavaArrayOperations {
      		3.Find largest number in array
      		4.Find second largest number in array
      		5.Remove duplicates from an array
-     		6.Remove duplicates from a sorted array     		
+     		6.Remove duplicates from a sorted array 
+     		
+     		    		Access Token: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
          */
 	
 		//1.Creating an array has 2 ways: array "numbers" of length 10 and array marks
