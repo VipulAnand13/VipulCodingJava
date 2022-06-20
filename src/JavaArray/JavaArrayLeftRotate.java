@@ -13,6 +13,8 @@ public class JavaArrayLeftRotate {
 		
 		rotateArrayLeftKeyTimes(number,key);
 		System.out.println(Arrays.toString(number));
+		
+		System.out.println(Arrays.toString(rotationOfArray(number,key)));
 
 	}
 	public static int[] rotateArrayLeftKeyTimes(int [] numbers,int key) {
@@ -31,6 +33,40 @@ public class JavaArrayLeftRotate {
 		
 		
 		return numbers;
+	}
+	
+	// Optimized Approach: Reverse the array elements till kth element then reverse the remaining elements and at last reverse entire array.
+	
+	//  Reverse(0,k-1) --> Reverse(k,n-1) --> Reverse(0,n-1) : 3 step process to rotate any array by k times.
+	public static int[] rotationOfArray(int[] arr, int k) {
+		int n=arr.length;
+		int j;
+		int temp=0;
+		for(j=0; j<k/2;j++) {
+			temp=arr[j];
+			arr[j]=arr[k-1-j];
+			arr[k-1-j]=temp;
+		}
+		
+		System.out.println(Arrays.toString(arr));
+		
+	
+		for(j=0; j<(n-k)/2;j++) {
+			temp=arr[j+k];
+			arr[j+k]=arr[n-1-j];
+			arr[n-1-j]=temp;
+		}
+		
+		System.out.println(Arrays.toString(arr));
+		
+		for(j=0; j<n/2;j++) {
+			temp=arr[j];
+			arr[j]=arr[n-1-j];
+			arr[n-1-j]=temp;
+		}
+		System.out.println(Arrays.toString(arr));
+		
+		return arr;
 	}
 
 }
