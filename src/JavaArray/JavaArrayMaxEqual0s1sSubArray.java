@@ -1,5 +1,7 @@
  package JavaArray;
 
+import java.util.HashMap;
+
 public class JavaArrayMaxEqual0s1sSubArray {
 
 	public static void main(String[] args) {
@@ -15,7 +17,7 @@ public class JavaArrayMaxEqual0s1sSubArray {
          int[] myArray= {0,0,1,0,1,1,0,0,0,1,1};
          MaxSubArray(myArray);
          MaxSubArraydummy(myArray);
-                  
+         System.out.println(largest0s1sSubArray(myArray)); 
 	}
 	
 	public static void MaxSubArray(int[] binaryArray) {
@@ -70,5 +72,29 @@ public class JavaArrayMaxEqual0s1sSubArray {
 		}
 		
 		System.out.println("Start:"+start +"End:"+end);
+	}
+	
+	/*
+	 *  Optimized approach: Using prefix sum to find longest equal 0s and 1s subarray--
+	 *  The given solution is the optimised one with TC of O(N) and SC of O(N).
+	 */
+	public static int largest0s1sSubArray(int[] arr) {
+	
+		int count=0;int maxlen=0;
+		
+		HashMap<Integer,Integer> hash=new HashMap<>();
+		
+		for(int i=0;i<arr.length;i++) {
+			count = count + (arr[i]==0 ?-1:1);
+				
+			if(hash.containsKey(count))
+				maxlen= Math.max(maxlen,i-hash.get(count));
+			
+			else
+				hash.put(count, i);
+		}
+			
+		
+		return maxlen;
 	}
 }

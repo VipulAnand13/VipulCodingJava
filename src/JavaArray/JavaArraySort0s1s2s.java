@@ -6,7 +6,7 @@ public class JavaArraySort0s1s2s {
 
 	public static void main(String[] args) {
 		// TODO Sort the array containing 0s ,1s and 2s.
-		int[] myArray= {1,2,0,0,1,1,0};
+		int[] myArray= {1,2,0,0,1,1,0 };
 		int n=myArray.length;
 		System.out.println(Arrays.toString(sorted012(myArray,n)));
 
