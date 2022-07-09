@@ -28,16 +28,43 @@ public class LongestDistinctSubstring {
 //			System.out.println(checklongest);
 //			System.out.println(checklongest.size());
 //			System.out.println(res.length());
-//			System.out.println(res);
-					
-		}
-		
-		
+//			System.out.println(res);					
+		}		
 	    return res.length();	
 	}
 
 	//_______________________________________________________________________________________
 	
+	//To find the longest distinct substring of the string
+	
+	static String longestDistinctSubstring(String str, String res) {
+		int start=0;
+		int end=0;
+		Set<Character> checkDis = new HashSet<Character>();
+		for(int i=0; i<str.length(); i++) {
+			
+			if(checkDis.contains(str.charAt(i))) {
+				end=i-1;
+				res= res.length()>(end-start)?res:str.substring(start, end+1);				
+				start=i+1;
+//     	       	System.out.println(res);
+//				System.out.println(checkDis);
+				checkDis.clear();
+			}
+						
+			else {
+				checkDis.add(str.charAt(i));
+				
+				if(i==str.length()-1) 
+					res= res.length()>(str.length()-1-start)?res:str.substring(start, str.length());
+			}			
+			
+		}
+		
+		return res;
+	}	
+		
+	//_______________________________________________________________________________________
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 //		Set<Character> checklongest = new HashSet<Character>();
@@ -47,9 +74,9 @@ public class LongestDistinctSubstring {
 //		System.out.println(s);
 		
 		String res="";
-		System.out.println(longestDistinct("helloMrVipul",res));
-		System.out.println(res);
+		//System.out.println(longestDistinct("helloMrVipul",res));
 		
+		System.out.println(longestDistinctSubstring("Letsdoparty",res));
 	}
 
 }
